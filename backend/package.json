@@ -1,0 +1,21 @@
+{
+  "name": "lead-generation-backend",
+  "version": "1.0.0",
+  "description": "Backend for lead generation system",
+  "main": "app.js",
+  "scripts": {
+    "start": "node app.js",
+    "dev": "nodemon app.js"
+  },
+  "dependencies": {
+    "body-parser": "^1.20.3",
+    "cors": "^2.8.5",
+    "dotenv": "^16.5.0",
+    "express": "^4.21.2",
+    "mysql2": "^3.14.1",
+    "nodemailer": "^6.10.1"
+  },
+  "devDependencies": {
+    "nodemon": "^3.0.2"
+  }
+}

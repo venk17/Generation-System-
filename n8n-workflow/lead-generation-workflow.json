@@ -1,0 +1,53 @@
+{
+  "name": "Lead Generation Workflow",
+  "nodes": [
+    {
+      "parameters": {
+        "path": "lead-generation",
+        "options": {}
+      },
+      "name": "Webhook",
+      "type": "n8n-nodes-base.webhook",
+      "typeVersion": 1,
+      "position": [
+        250,
+        300
+      ]
+    },
+    {
+      "parameters": {
+        "fromEmail": "your-email@example.com",
+        "toEmail": "sales@example.com",
+        "subject": "New Lead Generated",
+        "text": "A new lead has been submitted:\n\nName: {{$node[\"Webhook\"].json[\"name\"]}}\nEmail: {{$node[\"Webhook\"].json[\"email\"]}}\nCompany: {{$node[\"Webhook\"].json[\"company\"]}}\nMessage: {{$node[\"Webhook\"].json[\"message\"]}}",
+        "additionalFields": {}
+      },
+      "name": "Email",
+      "type": "n8n-nodes-base.emailSend",
+      "typeVersion": 1,
+      "position": [
+        550,
+        300
+      ],
+      "credentials": {
+        "smtp": "your-smtp-credentials"
+      }
+    }
+  ],
+  "connections": {
+    "Webhook": {
+      "main": [
+        [
+          {
+            "node": "Email",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "active": true,
+  "settings": {},
+  "id": "1"
+}
